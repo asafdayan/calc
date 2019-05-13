@@ -2,6 +2,11 @@ from tkinter import*
 
 def btnClick(numbers) :
     global operator
+    
+    if operator[-1] == '/' and numbers == 0:
+        print('Error: tying to divide by zero! You SUCK!')
+        numbers = 1
+    
     operator = operator + str(numbers)
     text_Input.set(operator)
 
