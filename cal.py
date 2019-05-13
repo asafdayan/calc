@@ -3,10 +3,6 @@ from tkinter import*
 def btnClick(numbers) :
     global operator
     
-    if operator[-1] == '/' and numbers == 0:
-        print('Error: tying to divide by zero! You SUCK!')
-        numbers = 1
-    
     operator = operator + str(numbers)
     text_Input.set(operator)
 
@@ -17,7 +13,12 @@ def btnClear ():
 
 def btnEqual ():
     global operator
-    sumup = str(eval(operator))
+    
+    try:
+        sumup = str(eval(operator))
+    except ZeroDivisionError:
+        sumup = "YOU TRIED TO DIVIED BY 0, YOU SUCK!"
+        
     text_Input.set(sumup)
     operator = ""
 
